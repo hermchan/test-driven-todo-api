@@ -111,8 +111,18 @@ app.delete('/api/todos/:id', function destroy(req, res) {
    */
    // splice();
    // indexOf();
-   todos.splice(5, 1)
-   res.json(200);
+   var newTask = req.body.task;
+   var newDescription = req.body.description;
+   var id = parseInt(req.params.id);
+   var theRightOne;
+   for (var i = 0; i < todos.length; i++){
+    if (todos[i]._id === id){
+      theRightOne = todos[i];
+    }
+  }
+
+   todos.splice(todos.indexOf().id, 1);
+   res.status(200).json(theRightOne);
 });
 
 /**********
