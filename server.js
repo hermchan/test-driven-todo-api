@@ -88,9 +88,20 @@ app.put('/api/todos/:id', function update(req, res) {
    * id specified in the route parameter (:id) and respond
    * with the newly updated todo.
    */
-   var id = req.params.id;
+   var newTask = req.body.task;
+   var newDescription = req.body.description;
+   var id = parseInt(req.params.id);
+   var theRightOne;
+  // find the object with this id in todosTest
+   for (var i = 0; i < todos.length; i++){
+    if (todos[i]._id === id){
+      theRightOne = todos[i];
+    }
+  }
 
-
+   theRightOne.task = newTask;
+   theRightOne.description = newDescription;
+  res.status(200).json(theRightOne);
 });
 
 app.delete('/api/todos/:id', function destroy(req, res) {
@@ -98,6 +109,10 @@ app.delete('/api/todos/:id', function destroy(req, res) {
    * id specified in the route parameter (:id) and respond
    * with success.
    */
+   // splice();
+   // indexOf();
+   todos.splice(5, 1)
+   res.json(200);
 });
 
 /**********
