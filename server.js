@@ -47,7 +47,11 @@ app.get('/api/todos/search', function search(req, res) {
   /* This endpoint responds with the search results from the
    * query in the request. COMPLETE THIS ENDPOINT LAST.
    */
-
+   var search = req.query.search;
+   if (req.query.search === todos){
+     console.log(todos);
+   }
+   res.json(search);
 });
 
 app.get('/api/todos', function index(req, res) {
